@@ -29,11 +29,14 @@ class Config extends Component {
   handleSubmit (e) {
     e.preventDefault()
 
-    console.log(this.context)
-
     electronConfig.set('url', this.state.url)
     electronConfig.set('apikey', this.state.apikey)
+
     this.context.router.transitionTo('/')
+  }
+
+  handleTest (e) {
+    e.preventDefault()
   }
 
   render () {

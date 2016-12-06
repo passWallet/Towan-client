@@ -8,7 +8,7 @@ import ElectronConfig from 'electron-config'
 import { Config } from './Config'
 import { Dashboard } from './Dashboard'
 
-import './global.css'
+import './app.global.css'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -27,11 +27,8 @@ const App = ({ children }) => (
 )
 
 const checkConfig = (nextState, replace) => {
-  if (!(electronConfig.has('url') && electronConfig.has('apiKey'))) {
-    console.log('Nothing found')
+  if (!(electronConfig.has('url') || electronConfig.has('apiKey'))) {
     replace('/config')
-  } else {
-    console.log('we are good')
   }
 }
 
@@ -39,6 +36,7 @@ const Routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Dashboard} onEnter={checkConfig} />
     <Route path="/config" component={Config} />
+    <Route path="*" component={Dashboard} onEnter={checkConfig} />
   </Route>
 )
 
