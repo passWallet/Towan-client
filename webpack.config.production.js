@@ -76,8 +76,8 @@
      }),
      new ExtractTextPlugin('style.css', { allChunks: true }),
      new HtmlWebpackPlugin({
-       filename: '../app.html',
-       template: 'app/app.html',
+       filename: '../index.html',
+       template: 'app/index.html',
        inject: false
      })
    ],

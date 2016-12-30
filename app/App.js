@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import DevTools from 'mobx-react-devtools'
@@ -22,7 +23,7 @@ class App extends Component {
   render () {
     return (
       <div>
-        {isDev && <DevTools />}
+      {isDev && <DevTools />}
         <Router history={hashHistory}>
           <Route path="/">
             <IndexRoute component={Dashboard} onEnter={checkConfig} />
