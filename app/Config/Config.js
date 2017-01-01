@@ -1,22 +1,27 @@
 // @flow
 import React, { Component } from 'react'
 import ElectronConfig from 'electron-config'
+import { observable } from "mobx"
+import { observer } from "mobx-react"
 
 const electronConfig = new ElectronConfig()
 
+@observer
 class Config extends Component {
 
   constructor (props, context) {
     super(props, context)
 
-    this.handleUrlChange = this.handleUrlChange.bind(this)
-    this.handleApiKeyChange = this.handleApiKeyChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-
     this.state = {
       url: '',
       apikey: ''
     }
+  }
+
+  componentWillMount () {
+    this.handleUrlChange = this.handleUrlChange.bind(this)
+    this.handleApiKeyChange = this.handleApiKeyChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleUrlChange (e) {
@@ -33,11 +38,7 @@ class Config extends Component {
     electronConfig.set('url', this.state.url)
     electronConfig.set('apikey', this.state.apikey)
 
-    this.context.router.transitionTo('/')
-  }
-
-  handleTest (e) {
-    e.preventDefault()
+    this.context.router.push('/')
   }
 
   render () {
@@ -49,11 +50,21 @@ class Config extends Component {
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="url">Your remote server address : </label>
-            <input type="text" className="form-control" name="url" placeholder="ex : localhost:8000/" />
+            <input
+              type="text"
+              className="form-control"
+              name="url"
+              placeholder="ex : localhost:8000/"
+              onChange={this.handleUrlChange} />
           </div>
           <div className="form-group">
             <label htmlFor="apikey">Api Key : </label>
-            <input type="text" className="form-control" name="apikey" placeholder="Your api key" />
+            <input
+              type="text"
+              className="form-control"
+              name="apikey"
+              placeholder="Your api key"
+              onChange={this.handleApiKeyChange} />
           </div>
           <button type="submit" className="btn btn-outline-primary">Submit</button>
         </form>

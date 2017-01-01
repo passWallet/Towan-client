@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react'
-import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+import { Router, Route, IndexRoute, hashHistory, Redirect } from 'react-router'
 import DevTools from 'mobx-react-devtools'
 import ElectronConfig from 'electron-config'
 
@@ -28,11 +28,11 @@ class App extends Component {
       {isDev && <DevTools />}
         <Router history={hashHistory}>
           <Route path="/" component={Dashboard} onEnter={checkConfig}>
-            <IndexRoute component={Recap} />
-            <Route path="settings" component={Settings} />
+            <IndexRoute name="Recap" component={Recap} />
+            <Route name="Settings" path="/settings" component={Settings} />
           </Route>
-          <Route path="/config" component={Config} />
-          {/*<Route path="*" component={Dashboard} onEnter={checkConfig} /> */}
+          <Route name="Config" path="/config" component={Config} />
+          <Redirect from="*" to="Recap" />
         </Router>
       </div>
     )

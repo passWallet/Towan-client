@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { Link, IndexLink } from 'react-router'
 
 class Navbar extends Component {
   render () {
@@ -8,11 +8,11 @@ class Navbar extends Component {
         <button className="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
         <div className="collapse navbar-toggleable-md" id="navbarResponsive">
           <ul className="nav navbar-nav">
-            <li className="nav-item active">
-              <Link className="nav-link" to="/">Recap <span className="sr-only">(current)</span></Link>
+            <li className="nav-item">
+              <IndexLink className="nav-link" to="/" activeClassName="active" >Recap</IndexLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/settings">Settings</Link>
+              <Link className="nav-link" to="/settings" activeClassName="active">Settings</Link>
             </li>
           </ul>
         </div>

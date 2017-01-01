@@ -1,4 +1,7 @@
 import { app, BrowserWindow, Menu, shell } from 'electron'
+import ElectronConfig from 'electron-config'
+
+const electronConfig = new ElectronConfig()
 
 let menu
 let template
@@ -133,6 +136,14 @@ app.on('ready', async () => {
           mainWindow.webContents.reload()
         }
       }, {
+        label: 'Reset Settings',
+        accelerator: 'Command+Q',
+        click () {
+          electronConfig.delete('url')
+          electronConfig.delete('apiKey')
+          mainWindow.webContents.reload()
+        }
+      }, {
         label: 'Toggle Full Screen',
         accelerator: 'Ctrl+Command+F',
         click () {
@@ -203,6 +214,14 @@ app.on('ready', async () => {
         label: '&Reload',
         accelerator: 'Ctrl+R',
         click () {
+          mainWindow.webContents.reload()
+        }
+      }, {
+        label: '&Reset Settings',
+        accelerator: 'Ctrl+Q',
+        click () {
+          electronConfig.delete('url')
+          electronConfig.delete('apiKey')
           mainWindow.webContents.reload()
         }
       }, {
