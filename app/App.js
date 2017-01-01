@@ -6,6 +6,8 @@ import ElectronConfig from 'electron-config'
 
 import { Config } from './Config'
 import { Dashboard } from './Dashboard'
+import { Recap } from './Dashboard/Recap'
+import { Settings } from './Dashboard/Settings'
 
 import './app.global.css'
 
@@ -25,11 +27,12 @@ class App extends Component {
       <div>
       {isDev && <DevTools />}
         <Router history={hashHistory}>
-          <Route path="/">
-            <IndexRoute component={Dashboard} onEnter={checkConfig} />
-            <Route path="/config" component={Config} />
-            <Route path="*" component={Dashboard} onEnter={checkConfig} />
+          <Route path="/" component={Dashboard} onEnter={checkConfig}>
+            <IndexRoute component={Recap} />
+            <Route path="settings" component={Settings} />
           </Route>
+          <Route path="/config" component={Config} />
+          {/*<Route path="*" component={Dashboard} onEnter={checkConfig} /> */}
         </Router>
       </div>
     )
