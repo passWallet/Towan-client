@@ -1,22 +1,31 @@
 import { observable, action } from 'mobx'
 import axios from 'axios'
 
-axios.defaults.headers.authorization = 'Apikey lola:b8367cb5137e30b32da9df46631cda8c4997b2c3'
+import ElectronConfig from 'electron-config'
+
+const electronConfig = new ElectronConfig()
 
 class Address {
+  @observable meta
   @observable addresses = []
 
-  async fetchData () {
-    let {data} = await axios.get('http://192.168.33.10:8000/api/admin/address')
-    console.log(data.objects)
-    this.setAddresses(data.objects)
+  async fetchData (uri = null) {
+    axios.defaults.headers.authorization = 'Apikey lola:' + electronConfig.get('apikey')
+    if (!uri) {
+      uri = '/api/admin/address?limit=10'
+    }
+    let {data} = await axios.get('http://' + electronConfig.get('url') + uri)
+    this.setAddresses(data)
   }
 
   @action setAddresses (data) {
-    this.addresses = data
+    console.log(data)
+    this.meta = data.meta
+    this.addresses = data.objects
   }
 
   @action clear () {
+    this.meta = {}
     this.addresses = []
   }
 }

@@ -1,12 +1,9 @@
 // @flow
 import React, { Component } from 'react'
 import ElectronConfig from 'electron-config'
-import { observable } from "mobx"
-import { observer } from "mobx-react"
 
 const electronConfig = new ElectronConfig()
 
-@observer
 class Config extends Component {
 
   constructor (props, context) {
@@ -35,7 +32,12 @@ class Config extends Component {
   handleSubmit (e) {
     e.preventDefault()
 
-    electronConfig.set('url', this.state.url)
+    // Need to verify if '/' added at the end
+    if (this.state.url.slice(-1) === '/') {
+      electronConfig.set('url', this.state.url.substr(0, this.state.url.length - 1))
+    } else {
+      electronConfig.set('url', this.state.url)
+    }
     electronConfig.set('apikey', this.state.apikey)
 
     this.context.router.push('/')
