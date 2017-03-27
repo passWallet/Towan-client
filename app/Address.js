@@ -18,8 +18,7 @@ class Address {
     this.setAddresses(data)
   }
 
-  @action setAddresses (data) {
-    console.log(data)
+  setAddresses (data) {
     this.meta = data.meta
     this.addresses = data.objects
   }

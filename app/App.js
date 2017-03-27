@@ -1,7 +1,5 @@
-// @flow
 import React, { Component } from 'react'
 import { Router, Route, IndexRoute, hashHistory, Redirect } from 'react-router'
-import DevTools from 'mobx-react-devtools'
 import ElectronConfig from 'electron-config'
 
 import { Config } from './Config'
@@ -10,8 +8,6 @@ import { Recap } from './Dashboard/Recap'
 import { Settings } from './Dashboard/Settings'
 
 import './app.global.css'
-
-const isDev = process.env.NODE_ENV !== 'production'
 
 const electronConfig = new ElectronConfig()
 
@@ -25,7 +21,6 @@ class App extends Component {
   render () {
     return (
       <div>
-      {isDev && <DevTools />}
         <Router history={hashHistory}>
           <Route path="/" component={Dashboard} onEnter={checkConfig}>
             <IndexRoute name="Recap" component={Recap} />

@@ -3,7 +3,6 @@ import Navbar from './Navbar'
 
 class Dashboard extends Component {
   render () {
-    console.log(this.props.children)
     return (
       <div>
         <Navbar />
