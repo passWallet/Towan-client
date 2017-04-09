@@ -5,7 +5,7 @@ import url from 'url'
 let win
 
 function createWindow () {
-  win = new BrowserWindow({width: 800, height: 600})
+  win = new BrowserWindow({width: 1080, height: 900})
 
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'app/index.html'),

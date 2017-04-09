@@ -7,8 +7,6 @@ import { Dashboard } from './Dashboard'
 import { Recap } from './Dashboard/Recap'
 import { Settings } from './Dashboard/Settings'
 
-import './app.global.css'
-
 const electronConfig = new ElectronConfig()
 
 const checkConfig = (nextState, replace) => {
