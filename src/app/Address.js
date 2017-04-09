@@ -15,9 +15,6 @@ class Address {
       uri = '/api/admin/address?limit=10'
     }
     return axios.get('http://' + electronConfig.get('url') + uri)
-      .then((response) => {
-        this.setAddresses(response)
-      })
   }
 
   @action setAddresses (data) {

@@ -17,7 +17,7 @@
     "classnames": "^2.2.5",
     "electron-compile": "^6.3.0",
     "electron-config": "^0.2.1",
-    "font-awesome": "^4.6.3",
+    "font-awesome": "^4.7.0",
     "mobx": "^2.6.0",
     "mobx-react": "^3.5.8",
     "moment": "^2.18.1",

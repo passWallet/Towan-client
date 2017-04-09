@@ -8,18 +8,16 @@ class Config extends Component {
   constructor (props, context) {
     super(props, context)
 
+    this.handleUrlChange = this.handleUrlChange.bind(this)
+    this.handleApiKeyChange = this.handleApiKeyChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+
     this.state = {
       url: '',
       apikey: ''
     }
   }
-
-  componentWillMount () {
-    this.handleUrlChange = this.handleUrlChange.bind(this)
-    this.handleApiKeyChange = this.handleApiKeyChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
+  
   handleUrlChange (e) {
     this.setState({url: e.target.value})
   }

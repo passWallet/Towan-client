@@ -12,6 +12,9 @@ class Recap extends Component {
     super(props)
     this.store = this.props.store
 
+    this.handleOnClickNext = this.handleOnClickNext.bind(this)
+    this.handleOnClickPrevious = this.handleOnClickPrevious.bind(this)
+
     this.state = {
       error: null
     }
@@ -20,20 +23,36 @@ class Recap extends Component {
 
   componentWillMount () {
     this.store.fetchData()
+      .then((response) => {
+        this.store.setAddresses(response.data)
+      })
       .catch((error) => {
         if (error.response) {
           // Todo
         } else {
-          console.log(error.message)
           this.setState({error: error.message})
         }
       })
+  }
+
+  handleOnClickPrevious () {
+    this.store.fetchData(this.store.meta.previous).then((response) => {
+      this.store.setAddresses(response.data)
+    })
+  }
+
+  handleOnClickNext() {
+    this.store.fetchData(this.store.meta.next).then((response) => {
+      this.store.setAddresses(response.data)
+    })
   }
 
   render () {
     return (
       <div className="row" style={{margin: '20px'}} >
         <div className="container">
+          <h2>Recaps</h2>
+          <br />
           {this.state.error ?
             (<div className="alert alert-danger" role="alert">
               <strong>{this.state.error} !</strong> Maybe you could check the <Link to="/settings" className="alert-link">settings</Link>.
@@ -54,7 +73,7 @@ class Recap extends Component {
                   'fa-close': !object.used
                 })
                 return (
-                  <tr>
+                  <tr key={object.id}>
                     <th scope="row">{object.id}</th>
                     <td>{object.address}</td>
                     <td><i className={usedClass} aria-hidden="true"></i></td>
@@ -66,13 +85,13 @@ class Recap extends Component {
           <div className="clearfix">
             {this.store.meta ?
               (this.store.meta.previous ?
-                <a href="#" onClick={this.store.fetchData(this.store.meta.previous)} className="float-xs-left"><i className="fa fa-chevron-left" aria-hidden="true"></i></a> :
+                <a href="#" onClick={this.handleOnClickPrevious} className="float-left"><i className="fa fa-chevron-left" aria-hidden="true"></i> Recent</a> :
                 null) :
               null
             }
             {this.store.meta ?
               (this.store.meta.next ?
-                <a href="#" onClick={this.store.fetchData(this.store.meta.next)} className="float-xs-right"><i className="fa fa-chevron-right" aria-hidden="true"></i></a> :
+                <a href="#" onClick={this.handleOnClickNext} className="float-right">Older <i className="fa fa-chevron-right" aria-hidden="true"></i></a> :
                 null) :
               null
             }
