@@ -4,14 +4,15 @@
   "description": "Towan Client",
   "main": "src/main.js",
   "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "start": "ENV=development electron-forge start",
+    "package": "ENV=production electron-forge package",
+    "make": "ENV=production electron-forge make"
   },
   "author": "Me",
   "license": "WTFPL",
   "dependencies": {
     "axios": "^0.15.3",
+    "babel-polyfill": "^6.23.0",
     "bootstrap": "^4.0.0-alpha.6",
     "classnames": "^2.2.5",
     "electron-compile": "^6.3.0",
@@ -29,7 +30,6 @@
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.3.3",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.24.1",

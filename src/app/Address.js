@@ -9,16 +9,18 @@ class Address {
   @observable meta
   @observable addresses = []
 
-  async fetchData (uri = null) {
+  fetchData (uri = null) {
     axios.defaults.headers.authorization = 'Apikey lola:' + electronConfig.get('apikey')
     if (!uri) {
       uri = '/api/admin/address?limit=10'
     }
-    let {data} = await axios.get('http://' + electronConfig.get('url') + uri)
-    this.setAddresses(data)
+    return axios.get('http://' + electronConfig.get('url') + uri)
+      .then((response) => {
+        this.setAddresses(response)
+      })
   }
 
-  setAddresses (data) {
+  @action setAddresses (data) {
     this.meta = data.meta
     this.addresses = data.objects
   }

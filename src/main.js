@@ -8,12 +8,14 @@ function createWindow () {
   win = new BrowserWindow({width: 1080, height: 900})
 
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'app/index.html'),
+    pathname: path.join(__dirname, '/app/index.html'),
     protocol: 'file:',
     slashes: true
   }))
 
-  win.webContents.openDevTools()
+  if (process.env.ENV === 'development') {
+    win.webContents.openDevTools()
+  }
 
   win.on('closed', () => {
     win = null

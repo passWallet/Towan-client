@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import classNames from 'classnames'
 import moment from 'moment'
+import { Link } from 'react-router'
 
 @inject(['store'])
 @observer
@@ -10,16 +11,33 @@ class Recap extends Component {
   constructor (props) {
     super(props)
     this.store = this.props.store
+
+    this.state = {
+      error: null
+    }
+
   }
 
   componentWillMount () {
     this.store.fetchData()
+      .catch((error) => {
+        if (error.response) {
+          // Todo
+        } else {
+          console.log(error.message)
+          this.setState({error: error.message})
+        }
+      })
   }
 
   render () {
     return (
       <div className="row" style={{margin: '20px'}} >
         <div className="container">
+          {this.state.error ?
+            (<div className="alert alert-danger" role="alert">
+              <strong>{this.state.error} !</strong> Maybe you could check the <Link to="/settings" className="alert-link">settings</Link>.
+              </div>) : null}
           <table className="table">
             <thead>
               <tr>
