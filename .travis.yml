@@ -6,6 +6,10 @@ node_js:
 os:
   - osx
   - linux
+addons:
+  apt:
+    packages:
+    - rpm
 install:
   - npm install -g electron-forge
   - npm install
