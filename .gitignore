@@ -1,4 +1,4 @@
 node_modules/
-.vagrant/
+.env
 npm-debug.log
 out/

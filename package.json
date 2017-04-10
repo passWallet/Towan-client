@@ -1,6 +1,6 @@
 {
   "name": "towan",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "Towan Client",
   "main": "src/main.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "package": "ENV=production electron-forge package",
     "make": "ENV=production electron-forge make"
   },
-  "author": "Me",
+  "author": "Lola <me@lola.ninja>",
   "license": "WTFPL",
   "dependencies": {
     "axios": "^0.15.3",
@@ -64,8 +64,8 @@
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
       "github_repository": {
-        "owner": "",
-        "name": ""
+        "owner": "passWallet",
+        "name": "Towant-client"
       },
       "windowsStoreConfig": {
         "packageName": ""
