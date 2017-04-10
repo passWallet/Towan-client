@@ -60,7 +60,7 @@
       },
       "electronPackagerConfig": {},
       "electronWinstallerConfig": {
-        "name": ""
+        "name": "Towan"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
@@ -69,7 +69,7 @@
         "name": "Towant-client"
       },
       "windowsStoreConfig": {
-        "packageName": ""
+        "packageName": "Towan"
       }
     }
   }
