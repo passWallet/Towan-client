@@ -5,6 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "start": "ENV=development electron-forge start",
+    "test": "echo 'No test !' && exit 0",
     "package": "ENV=production electron-forge package",
     "make": "ENV=production electron-forge make"
   },

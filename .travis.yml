@@ -10,6 +10,8 @@ install:
   - npm install -g electron-forge
   - npm install
 script:
+  - npm test
+after_script:
   - electron-forge pusblish
 branches:
   only:
