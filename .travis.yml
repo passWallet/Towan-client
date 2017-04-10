@@ -11,9 +11,10 @@ install:
   - npm install
 script:
   - npm test
-after_script:
-  - electron-forge publish
+deploy:
+  provider: script
+  script: electron-forge publish
   on:
     branch:
-    - master
-    - travis
+      - master
+      - travis
