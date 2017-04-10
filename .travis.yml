@@ -12,7 +12,7 @@ install:
 script:
   - npm test
 after_script:
-  - electron-forge pusblish
+  - electron-forge publish
 branches:
   only:
     - master
