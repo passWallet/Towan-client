@@ -1,0 +1,19 @@
+version: 0.1.{build}
+
+platform:
+  - x64
+
+install:
+  - ps: Install-Product node 7 x64
+  - npm install -g electron-forge
+  - npm install
+
+build_script:
+  - electron-forge publish
+
+test: off
+
+branches:
+    only:
+      - master
+      - travis
