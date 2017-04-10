@@ -13,7 +13,6 @@ script:
   - npm test
 after_script:
   - electron-forge publish
-branches:
-  only:
+  on:
     - master
     - travis
