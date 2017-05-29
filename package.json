@@ -1,6 +1,7 @@
 {
   "name": "towan",
-  "version": "0.1.0",
+  "productName": "Towan",
+  "version": "0.1.1",
   "description": "Towan Client",
   "main": "src/main.js",
   "scripts": {
@@ -54,15 +55,21 @@
           "zip"
         ],
         "linux": [
-          "deb",
-          "rpm"
+          "deb"
         ]
       },
-      "electronPackagerConfig": {},
+      "electronPackagerConfig": {
+        "asar": true,
+        "icon": "./src/assets/icons",
+        "overwrite": true
+      },
       "electronWinstallerConfig": {
         "name": "Towan"
       },
-      "electronInstallerDebian": {},
+      "electronInstallerDebian": {
+        "icon": "./src/assets/icons/appicon_128x128.png",
+        "homepage": "https://github.com/passWallet/Towant-client"
+      },
       "electronInstallerRedhat": {},
       "github_repository": {
         "owner": "passWallet",

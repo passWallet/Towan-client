@@ -1,6 +1,10 @@
 platform:
   - x64
 
+environment:
+  GITHUB_TOKEN:
+    secure: <encryped-value>
+
 init:
   - git config --global core.autocrlf input
 
