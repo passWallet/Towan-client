@@ -59,9 +59,7 @@
         ]
       },
       "electronPackagerConfig": {
-        "asar": true,
-        "icon": "./src/assets/icons",
-        "overwrite": true
+        "asar": true
       },
       "electronWinstallerConfig": {
         "name": "Towan"
