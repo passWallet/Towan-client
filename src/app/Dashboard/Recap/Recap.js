@@ -27,11 +27,7 @@ class Recap extends Component {
         this.store.setAddresses(response.data)
       })
       .catch((error) => {
-        if (error.response) {
-          // Todo
-        } else {
-          this.setState({error: error.message})
-        }
+        this.setState({error: error.message})
       })
   }
 

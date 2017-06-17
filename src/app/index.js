@@ -3,7 +3,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'mobx-react'
 import App from './App'
-import AddressStore from './Address'
+import AddressStore from './store/Address'
 
 let address = new AddressStore()
 
