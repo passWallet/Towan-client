@@ -13,7 +13,7 @@ class ChannelListener {
 		// We need to retrieve the 'url' store in the electron config
 		const electronConfig = new ElectronConfig()
 		assert(electronConfig.has('url') && electronConfig.has('apikey'))
-
+		
 		let options = {
 			headers: {
 				Authorization: 'Apikey lola:' + electronConfig.get('apikey')
